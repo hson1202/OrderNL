@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Test Cloudinary Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .upload-form {
+            border: 2px dashed #ddd;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .upload-form.dragover {
+            border-color: #4CAF50;
+            background: #f0f8f0;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+            padding: 10px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .uploaded-image {
+            max-width: 300px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .url-display {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 10px 0;
+        }
+        .loading {
+            display: none;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Cloudinary Upload Local</h1>
+        
+        <div class="upload-form" id="uploadForm">
+            <p>📁 Chọn hình ảnh để test upload lên Cloudinary</p>
+            <input type="file" id="fileInput" accept="image/*">
+            <br>
+            <button onclick="uploadImage()" id="uploadBtn">🚀 Upload to Cloudinary</button>
+            <div class="loading" id="loading">⏳ Đang upload...</div>
+        </div>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:4000/api/upload/image';
+        
+        // Drag and drop functionality
+        const uploadForm = document.getElementById('uploadForm');
+        const fileInput = document.getElementById('fileInput');
+        
+        uploadForm.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadForm.classList.add('dragover');
+        });
+        
+        uploadForm.addEventListener('dragleave', () => {
+            uploadForm.classList.remove('dragover');
+        });
+        
+        uploadForm.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadForm.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+            }
+        });
+        
+        async function uploadImage() {
+            const file = fileInput.files[0];
+            if (!file) {
+                showResult('❌ Vui lòng chọn file!', 'error');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('image', file);
+            
+            const uploadBtn = document.getElementById('uploadBtn');
+            const loading = document.getElementById('loading');
+            
+            try {
+                uploadBtn.disabled = true;
+                loading.style.display = 'block';
+                
+                console.log('🚀 Uploading to:', API_URL);
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                console.log('📥 Response:', result);
+                
+                if (result.success) {
+                    showResult(`
+                        <h3>✅ Upload thành công!</h3>
+                        <p><strong>Message:</strong> ${result.message}</p>
+                        <p><strong>Cloudinary URL:</strong></p>
+                        <div class="url-display">${result.url}</div>
+                        <img src="${result.url}" alt="Uploaded image" class="uploaded-image">
+                        <p><strong>Public ID:</strong> ${result.public_id}</p>
+                    `, 'success');
+                } else {
+                    showResult(`❌ Upload failed: ${result.error}`, 'error');
+                }
+                
+            } catch (error) {
+                console.error('❌ Upload error:', error);
+                showResult(`❌ Network error: ${error.message}<br><br>
+                    <strong>Kiểm tra:</strong><br>
+                    • Backend có đang chạy ở port 4000?<br>
+                    • Cloudinary credentials đã setup chưa?<br>
+                    • Check console để xem error details
+                `, 'error');
+            } finally {
+                uploadBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+        
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `<div class="result ${type}">${message}</div>`;
+        }
+        
+        // Test connection on page load
+        window.onload = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/');
+                if (response.ok) {
+                    console.log('✅ Backend connection: OK');
+                } else {
+                    console.log('⚠️ Backend connection: Response not OK');
+                }
+            } catch (error) {
+                console.log('❌ Backend connection failed:', error.message);
+                showResult(`⚠️ Backend không kết nối được. Đảm bảo backend đang chạy ở port 4000!`, 'error');
+            }
+        };
+    </script>
+</body>
+</html>

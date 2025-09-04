@@ -1,0 +1,1202 @@
+.menu-page {
+  min-height: 100vh;
+  background: 
+    linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="grain" width="200" height="200" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="2" fill="white" opacity="0.05"/><circle cx="150" cy="150" r="1.5" fill="white" opacity="0.05"/><circle cx="100" cy="20" r="1" fill="white" opacity="0.05"/><circle cx="20" cy="120" r="1" fill="white" opacity="0.05"/><circle cx="180" cy="80" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="200" height="200" fill="url(%23grain)"/></svg>');
+  background-attachment: fixed;
+}
+
+/* Hero Section */
+.menu-hero {
+  background: transparent; /* remove purple gradient */
+  padding: 40px 20px 50px;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  min-height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+ 
+}
+
+
+
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Background image container behind hero content */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1; /* show the real image without dimming */
+  transform: scale(1.1);
+}
+
+.hero-overlay { display: none; }
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  color: #f0ddc0;
+ 
+  letter-spacing: -1px;
+}
+
+@keyframes glow {
+  0% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); }
+  100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.8)); }
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  animation: fadeInUp 0.8s ease-out 0.1s both;
+  font-weight: 300;
+  line-height: 1.5;
+  text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Search Container */
+.search-container {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.search-box {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 60px;
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-box:focus-within {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 20px 60px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    0 0 0 1px rgba(255,255,255,0.1);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  padding: 18px 25px;
+  font-size: 1.1rem;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-weight: 400;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+}
+
+.search-icon {
+  position: absolute;
+  right: 20px;
+  font-size: 1.2rem;
+  color: #667eea;
+  pointer-events: none;
+}
+
+.clear-search {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.clear-search:hover {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.search-results-info {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Sticky Category Bar */
+.category-bar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+.category-bar.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+  padding: 5px 0; /* Giảm padding khi sticky */
+}
+
+/* Desktop: Giảm kích thước category-bar khi sticky */
+@media (min-width: 768px) {
+  .category-bar.sticky {
+    padding: 3px 0; /* Giảm padding trên desktop */
+  }
+  
+  .category-bar.sticky .explore-menu-list {
+    gap: 20px; /* Giảm khoảng cách giữa categories */
+    margin: 10px 0; /* Giảm margin */
+  }
+  
+  .category-bar.sticky .explore-menu-list-item img,
+  .category-bar.sticky .category-placeholder {
+    width: 70px; /* Giảm kích thước ảnh/placeholder */
+    min-height: 50px;
+  }
+  
+  .category-bar.sticky .explore-menu-list-item p {
+    font-size: 12px; /* Giảm font size */
+    margin-top: 5px;
+    max-width: 50px; /* Giảm max-width */
+  }
+  
+  /* Giảm kích thước tổng thể của category-bar */
+  .category-bar.sticky .category-container {
+    padding: 0 15px; /* Giảm padding container */
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.category-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.category-scroll {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 5px 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  color: #555;
+  font-weight: 500;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.category-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s;
+}
+
+.category-btn:hover::before {
+  left: 100%;
+}
+
+.category-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.category-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+  transform: translateY(-1px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.category-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.category-icon-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.category-name {
+  font-size: 1.7rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Food Section */
+.food-section {
+  padding: 20px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+
+/* Food Grid - Fixed version */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+  padding: 30px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.food-item-wrapper {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: staggeredFadeIn 0.6s ease-out forwards;
+  transition: all 0.3s ease;
+  height: 100%; /* Đảm bảo wrapper có chiều cao đầy đủ */
+}
+
+.food-item-wrapper:nth-child(1) { animation-delay: 0.1s; }
+.food-item-wrapper:nth-child(2) { animation-delay: 0.2s; }
+.food-item-wrapper:nth-child(3) { animation-delay: 0.3s; }
+.food-item-wrapper:nth-child(4) { animation-delay: 0.4s; }
+.food-item-wrapper:nth-child(5) { animation-delay: 0.5s; }
+.food-item-wrapper:nth-child(6) { animation-delay: 0.6s; }
+.food-item-wrapper:nth-child(7) { animation-delay: 0.7s; }
+.food-item-wrapper:nth-child(8) { animation-delay: 0.8s; }
+.food-item-wrapper:nth-child(9) { animation-delay: 0.9s; }
+.food-item-wrapper:nth-child(10) { animation-delay: 1.0s; }
+
+@keyframes staggeredFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.food-item-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+/* Food Item - Fixed layout - CHỈ ÁP DỤNG TRÊN DESKTOP */
+@media (min-width: 769px) {
+  .food-item {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    /* Flexbox layout để tạo cấu trúc đồng đều */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Chiều cao đầy đủ */
+    min-height: 380px; /* Chiều cao tối thiểu cố định */
+  }
+
+  .food-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    border-color: rgba(102, 126, 234, 0.2);
+  }
+
+  .food-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .food-item:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Food Image Container */
+  .food-image-container {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Chiều cao cố định cho hình ảnh */
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    flex-shrink: 0; /* Không co lại */
+  }
+
+  .food-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+  }
+
+  .food-item:hover img {
+    transform: scale(1.1);
+  }
+
+  /* Food Content - Flexible layout */
+  .food-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Chiếm không gian còn lại */
+    justify-content: space-between;
+  }
+
+  /* Food Info - Phần thông tin sản phẩm */
+  .food-info {
+    flex: 1; /* Chiếm không gian có thể */
+    margin-bottom: 15px;
+  }
+
+  .food-item h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    /* Giới hạn số dòng hiển thị */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Tối đa 2 dòng */
+    line-clamp: 2; /* Standard property for compatibility */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.8rem; /* Đảm bảo chiều cao tối thiểu cho 2 dòng */
+  }
+
+  .food-item p {
+    color: #718096;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    /* Giới hạn mô tả */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Tối đa 2 dòng */
+    line-clamp: 2; /* Standard property for compatibility */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.4rem; /* Đảm bảo chiều cao tối thiểu */
+  }
+
+  /* Price and Action - Luôn ở cuối */
+  .food-price-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto; /* Đẩy xuống cuối */
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    flex-shrink: 0; /* Không co lại */
+  }
+
+  .food-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2d3748;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Add to Cart Button */
+  .add-to-cart-btn {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    position: relative;
+    overflow: hidden;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .add-to-cart-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .add-to-cart-btn:hover::before {
+    left: 100%;
+  }
+
+  .add-to-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+  }
+
+  .add-to-cart-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+  }
+
+  /* Badge/Label styles nếu có */
+  .food-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 1;
+  }
+}
+
+/* Loading Container */
+.loading-container {
+  text-align: center;
+  padding: 60px 20px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.empty-state p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reset-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.reset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Floating Cart Button */
+/* Floating cart button styles are now handled by the FloatingCartBtn component */
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+  .food-grid {
+    max-width: 1400px;
+    gap: 30px;
+  }
+}
+
+/* Desktop to Large Tablet */
+@media (max-width: 1024px) {
+  .food-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    max-width: 900px;
+  }
+  
+  .food-item {
+    min-height: 360px;
+  }
+  
+  .food-image-container {
+    height: 160px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-hero {
+    padding: 30px 20px 40px;
+    min-height: 25vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+  
+  .search-box {
+    max-width: 95%;
+  }
+  
+  .search-input {
+    font-size: 1rem;
+    padding: 15px 20px;
+  }
+  
+  .category-btn {
+    min-width: 80px;
+    padding: 12px 15px;
+  }
+  
+  .category-icon,
+  .category-icon-placeholder {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .category-name {
+    font-size: 1.4rem;
+  }
+  
+
+  
+  .food-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 25px 0;
+  }
+  
+  .food-item {
+    padding: 15px;
+    min-height: 320px;
+  }
+  
+  .food-image-container {
+    height: 140px;
+    margin-bottom: 12px;
+  }
+  
+  .food-item h3 {
+    font-size: 1rem;
+    min-height: 2.4rem;
+  }
+  
+  .food-item p {
+    font-size: 0.85rem;
+    min-height: 2.1rem;
+  }
+  
+  .food-price {
+    font-size: 1.1rem;
+  }
+  
+  .add-to-cart-btn {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    min-width: 70px;
+  }
+  
+  .add-to-cart-btn:hover {
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+  }
+  
+  /* Floating cart button responsive styles are now handled by the FloatingCartBtn component */
+}
+
+@media (max-width: 480px) {
+  .menu-hero {
+    padding: 60px 15px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .search-box {
+    border-radius: 25px;
+  }
+  
+  .search-input {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .category-scroll {
+    gap: 10px;
+    cursor: grab;
+  }
+  
+  .category-scroll:active {
+    cursor: grabbing;
+  }
+  
+  .category-btn {
+    min-width: 70px;
+    padding: 10px 12px;
+  }
+  
+  .category-icon,
+  .category-icon-placeholder {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .menu-hero {
+    padding: 25px 15px 35px;
+    min-height: 22vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+  
+  .hero-content p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .search-box {
+    max-width: 100%;
+    margin: 0 10px;
+  }
+  
+  .search-input {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+  
+  .category-bar {
+    padding: 1px 0;
+  }
+  
+  .category-btn {
+    padding: 10px 20px;
+    gap: 8px;
+  }
+  
+  .category-scroll {
+    cursor: grab;
+  }
+  
+  .category-scroll:active {
+    cursor: grabbing;
+  }
+  
+  .category-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .category-name {
+    font-size: 1.2rem;
+  }
+  
+  .food-section {
+    padding: 25px 15px;
+  }
+  
+
+  
+  .food-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 15px 0;
+    margin: 0 5px;
+  }
+  
+  .food-item {
+    padding: 18px;
+    min-height: 100px;
+  }
+  
+  .food-image-container {
+    height: 200px;
+    margin-bottom: 15px;
+  }
+  
+  .food-item h3 {
+    font-size: 1.1rem;
+    min-height: 2.6rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* Standard property for compatibility */
+  }
+  
+  .food-item p {
+    font-size: 0.9rem;
+    min-height: 2.4rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* Standard property for compatibility */
+  }
+  
+  .food-price {
+    font-size: 1.2rem;
+  }
+  
+  .add-to-cart-btn {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    min-width: 80px;
+  }
+  
+  .add-to-cart-btn:hover {
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+  }
+  
+  .food-item-wrapper {
+    animation-delay: 0.05s !important;
+  }
+  
+  /* Floating cart button responsive styles are now handled by the FloatingCartBtn component */
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-food-item {
+  height: 320px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.skeleton-category {
+  height: 44px;
+  width: 120px;
+  border-radius: 25px;
+  margin-right: 10px;
+}
+
+/* Pulse animation for interactive elements */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Bounce animation for buttons */
+.bounce-in {
+  animation: bounceIn 0.5s ease-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Hover effect enhancements */
+.interactive-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Explore Menu List Styles - Fixed version */
+.category-bar .explore-menu-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px; /* Giảm gap từ 30px xuống 20px */
+  text-align: center;
+  margin: 20px 0px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  padding: 0 10px; /* Thêm padding để tránh item đầu tiên bị sát lề */
+}
+
+.category-bar .explore-menu-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.category-bar .explore-menu-list::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.category-bar .explore-menu-list::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+.category-bar .explore-menu-list::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+.category-bar .explore-menu-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 85px; /* Giảm từ 120px xuống 85px */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.category-bar .explore-menu-list-item:hover {
+  transform: translateY(-2px);
+}
+
+.category-bar .explore-menu-list-item img {
+  width: 100px; /* Giảm từ 80px xuống 70px */
+  height: 70px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  border: 2px solid transparent; /* Thêm border trong suốt để tránh jump khi active */
+}
+
+.category-bar .explore-menu-list-item p {
+  margin-top: 8px; /* Giảm từ 10px xuống 8px */
+  color: #747474;
+  font-size: 14px; /* Giảm từ 16px xuống 14px */
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 85px; /* Giảm từ 100px xuống 85px */
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.category-bar .explore-menu-list-item.active img {
+  border: 3px solid #ff6b35; /* Thay đổi màu và độ dày border */
+}
+
+.category-bar .explore-menu-list-item.active p {
+  color: #ff6b35; /* Đổi màu text khi active */
+  font-weight: 600;
+}
+
+.category-bar .category-placeholder {
+  width: 70px; /* Giảm từ 80px xuống 70px */
+  height: 70px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.2s;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px; /* Giảm từ 24px xuống 20px */
+  font-weight: bold;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.category-bar .category-placeholder.active {
+  border: 3px solid #ff6b35;
+}
+
+/* Responsive styles for explore-menu-list */
+@media (max-width: 768px) {
+  .category-bar .explore-menu-list {
+    gap: 15px;
+    margin: 15px 0px;
+    padding: 0 15px;
+    scroll-snap-type: x mandatory;
+    cursor: grab;
+  }
+  
+  .category-bar .explore-menu-list:active {
+    cursor: grabbing;
+  }
+  
+  .category-bar .explore-menu-list-item {
+    scroll-snap-align: start;
+    min-width: 70px;
+  }
+  
+  .category-bar .explore-menu-list-item img,
+  .category-bar .category-placeholder {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .category-bar .explore-menu-list-item p {
+    font-size: 13px;
+    margin-top: 6px;
+    max-width: 70px;
+  }
+  
+  .category-bar .category-placeholder {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-bar .explore-menu-list {
+    gap: 12px;
+    margin: 12px 0px;
+    padding: 0 10px;
+  }
+  
+  .category-bar .explore-menu-list-item {
+    min-width: 60px;
+  }
+  
+  .category-bar .explore-menu-list-item img,
+  .category-bar .category-placeholder {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .category-bar .explore-menu-list-item p {
+    font-size: 12px;
+    margin-top: 5px;
+    max-width: 60px;
+  }
+  
+  .category-bar .category-placeholder {
+    font-size: 16px;
+  }
+} 

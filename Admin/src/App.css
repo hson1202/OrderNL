@@ -1,0 +1,20 @@
+.app-content {
+  display: flex;
+  min-height: calc(100vh - 60px); /* Trừ đi chiều cao của navbar */
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Ngăn horizontal scroll */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  .app-content > *:not(.sidebar) {
+    margin-top: 50px;
+  }
+}

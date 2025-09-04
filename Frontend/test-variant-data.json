@@ -1,0 +1,171 @@
+{
+  "products": [
+    {
+      "_id": "pad_thai_001",
+      "sku": "PT001",
+      "name": "PAD THAI (480 g)",
+      "nameVI": "Pad Thai (480 g)",
+      "nameEN": "Pad Thai (480 g)",
+      "nameSK": "Pad Thai (480 g)",
+      "description": "Pad thai rezance, jarná cibuľka, klíčky, mrkva, koriander, limetka (2,3,4,6)",
+      "price": null,
+      "category": "REZANCE",
+      "image": "pad_thai_base.jpg",
+      "quantity": 100,
+      "isPromotion": false,
+      "promotionPrice": null,
+      "soldCount": 25,
+      "status": "active",
+      "options": [
+        {
+          "name": "Protein",
+          "type": "select",
+          "defaultChoiceCode": "a",
+          "choices": [
+            { 
+              "code": "a", 
+              "label": "a. s kuracím mäsom",   
+              "price": 6.50,
+              "image": "pad_thai_chicken.jpg"
+            },
+            { 
+              "code": "b", 
+              "label": "b. s hovädzím mäsom",  
+              "price": 7.00,
+              "image": "pad_thai_beef.jpg"
+            },
+            { 
+              "code": "c", 
+              "label": "c. s krevetami",       
+              "price": 7.00,
+              "image": "pad_thai_shrimp.jpg"
+            },
+            { 
+              "code": "d", 
+              "label": "d. s tofu",            
+              "price": 6.50,
+              "image": "pad_thai_tofu.jpg"
+            }
+          ],
+          "pricingMode": "override"
+        }
+      ]
+    },
+    {
+      "_id": "pho_001",
+      "sku": "PH001",
+      "name": "PHO BO (500 g)",
+      "nameVI": "Phở Bò (500 g)",
+      "nameEN": "Pho Beef (500 g)",
+      "nameSK": "Pho Bo (500 g)",
+      "description": "Tradiční vietnamská polévka s rýžovými nudlemi a hovězím masem",
+      "price": null,
+      "category": "POLIEVKY",
+      "image": "pho_base.jpg",
+      "quantity": 80,
+      "isPromotion": true,
+      "promotionPrice": 8.50,
+      "soldCount": 45,
+      "status": "active",
+      "options": [
+        {
+          "name": "Maso",
+          "type": "select",
+          "defaultChoiceCode": "a",
+          "choices": [
+            { 
+              "code": "a", 
+              "label": "a. Hovězí svíčková",   
+              "price": 9.00,
+              "image": "pho_tenderloin.jpg"
+            },
+            { 
+              "code": "b", 
+              "label": "b. Hovězí bůček",  
+              "price": 8.50,
+              "image": "pho_brisket.jpg"
+            },
+            { 
+              "code": "c", 
+              "label": "c. Hovězí kližka",       
+              "price": 8.00,
+              "image": "pho_shank.jpg"
+            }
+          ],
+          "pricingMode": "override"
+        },
+        {
+          "name": "Velikost",
+          "type": "select",
+          "defaultChoiceCode": "m",
+          "choices": [
+            { 
+              "code": "s", 
+              "label": "S - Malá (400 g)",   
+              "price": -1.00,
+              "image": null
+            },
+            { 
+              "code": "m", 
+              "label": "M - Střední (500 g)",  
+              "price": 0.00,
+              "image": null
+            },
+            { 
+              "code": "l", 
+              "label": "L - Velká (600 g)",       
+              "price": 1.50,
+              "image": null
+            }
+          ],
+          "pricingMode": "add"
+        }
+      ]
+    },
+    {
+      "_id": "bun_cha_001",
+      "sku": "BC001",
+      "name": "BUN CHA (450 g)",
+      "nameVI": "Bún Chả (450 g)",
+      "nameEN": "Bun Cha (450 g)",
+      "nameSK": "Bun Cha (450 g)",
+      "description": "Rýžové nudle s grilovaným vepřovým masem a čerstvými bylinkami",
+      "price": 7.50,
+      "category": "HLAVNÉ_JEDLÁ",
+      "image": "bun_cha_base.jpg",
+      "quantity": 60,
+      "isPromotion": false,
+      "promotionPrice": null,
+      "soldCount": 30,
+      "status": "active",
+      "options": [
+        {
+          "name": "Pikantnosť",
+          "type": "select",
+          "defaultChoiceCode": "m",
+          "choices": [
+            { 
+              "code": "m", 
+              "label": "M - Mierne pikantné",   
+              "price": 0.00,
+              "image": null
+            },
+            { 
+              "code": "h", 
+              "label": "H - Horúce",  
+              "price": 0.00,
+              "image": null
+            },
+            { 
+              "code": "vh", 
+              "label": "VH - Veľmi horúce",       
+              "price": 0.00,
+              "image": null
+            }
+          ],
+          "pricingMode": "add"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+.language-switcher {
+  position: relative;
+  display: inline-block;
+  z-index: 1004;
+}
+
+.language-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #e1e5e9;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  color: #333;
+  min-width: 50px;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.language-button:hover {
+  background: #f8f9fa;
+  border-color: #cbd5e0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.language-button:active {
+  transform: translateY(0);
+}
+
+/* Flag Icons Styling */
+.language-button .fi {
+  font-size: 14px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.language-code {
+  font-weight: 600;
+  color: #333;
+  font-size: 11px;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: rgba(255,255,255,0.98);
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 140px;
+  z-index: 1005;
+  overflow: hidden;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
+  transition: background-color 0.15s ease;
+  color: #374151;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.language-option:last-child {
+  border-bottom: none;
+}
+
+.language-option:hover {
+  background: #f3f4f6;
+}
+
+.language-option.active {
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.language-option .fi {
+  font-size: 16px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.language-option .language-name {
+  flex: 1;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .language-button {
+    padding: 5px 8px;
+    font-size: 11px;
+    min-width: 45px;
+    gap: 5px;
+  }
+  
+  .language-button .fi {
+    font-size: 12px;
+  }
+  
+  .language-code {
+    font-size: 10px;
+  }
+  
+  .language-dropdown {
+    min-width: 120px;
+    right: -10px;
+  }
+  
+  .language-option {
+    padding: 8px 10px;
+    font-size: 12px;
+    gap: 6px;
+  }
+  
+  .language-option .fi {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  .language-button {
+    padding: 4px 6px;
+    font-size: 10px;
+    min-width: 40px;
+    gap: 4px;
+  }
+  
+  .language-button .fi {
+    font-size: 11px;
+  }
+  
+  .language-code {
+    font-size: 9px;
+  }
+  
+  .language-dropdown {
+    min-width: 110px;
+    right: -5px;
+  }
+  
+  .language-option {
+    padding: 6px 8px;
+    font-size: 11px;
+    gap: 5px;
+  }
+  
+  .language-option .fi {
+    font-size: 13px;
+  }
+} 

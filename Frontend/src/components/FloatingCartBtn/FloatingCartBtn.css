@@ -1,0 +1,136 @@
+.floating-cart-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 120px;
+  animation: pulseCart 2s infinite;
+  /* Ensure button is always visible */
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+@keyframes pulseCart {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.floating-cart-btn:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 12px 35px rgba(40, 167, 69, 0.5);
+}
+
+.cart-icon {
+  font-size: 1.8rem;
+  animation: shake 0.8s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.cart-count {
+  background: rgba(255, 255, 255, 0.9);
+  color: #28a745;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  line-height: 1;
+}
+
+.cart-total {
+  font-weight: 600;
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+
+/* Floating cart button will be hidden via JavaScript when mobile menu is open */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .floating-cart-btn {
+    bottom: 110px;
+    right: 20px;
+    padding: 12px 16px;
+    min-width: 100px;
+    border-radius: 20px;
+    /* Ensure visibility on mobile */
+    z-index: 1003;
+    /* Add mobile-specific shadow */
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.6);
+    /* Force display on mobile */
+    display: flex !important;
+    /* Ensure button is visible */
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  .cart-icon {
+    font-size: 1.5rem;
+  }
+  
+  .cart-count {
+    font-size: 0.7rem;
+    padding: 1px 6px;
+  }
+  
+  .cart-total {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-cart-btn {
+    bottom: 110px;
+    right: 15px;
+    padding: 10px 14px;
+    min-width: 90px;
+    /* Ensure visibility on small mobile */
+    z-index: 1003;
+    /* Adjust for very small screens */
+    font-size: 0.9rem;
+    /* Force display on small mobile */
+    display: flex !important;
+    /* Ensure button is visible */
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  .cart-icon {
+    font-size: 1.3rem;
+  }
+  
+  .cart-count {
+    font-size: 0.65rem;
+    padding: 1px 5px;
+  }
+  
+  .cart-total {
+    font-size: 0.75rem;
+  }
+}

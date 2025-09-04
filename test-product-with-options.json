@@ -1,0 +1,30 @@
+{
+  "sku": "TEST001",
+  "name": "PAD THAI (480 g)",
+  "nameVI": "Pad Thai (480 g)",
+  "nameEN": "Pad Thai (480 g)",
+  "nameSK": "Pad Thai (480 g)",
+  "description": "Pad thai rezance, jarná cibuľka, klíčky, mrkva, koriander, limetka (2,3,4,6)",
+  "price": 6.50,
+  "category": "REZANCE",
+  "image": "",
+  "quantity": 100,
+  "isPromotion": false,
+  "promotionPrice": null,
+  "soldCount": 0,
+  "status": "active",
+  "options": [
+    {
+      "name": "Protein",
+      "type": "select",
+      "defaultChoiceCode": "a",
+      "choices": [
+        { "code": "a", "label": "a. s kuracím mäsom", "price": 6.50 },
+        { "code": "b", "label": "b. s hovädzím mäsom", "price": 7.00 },
+        { "code": "c", "label": "c. s krevetami", "price": 7.00 },
+        { "code": "d", "label": "d. s tofu", "price": 6.50 }
+      ],
+      "pricingMode": "override"
+    }
+  ]
+}

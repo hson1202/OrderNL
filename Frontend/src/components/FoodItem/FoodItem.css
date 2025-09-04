@@ -1,0 +1,188 @@
+.food-item {
+    width: 100%;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px #888888;
+    transition: 0.3s;
+    animation: fadeIn 1s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.food-item:hover {
+    transform: scale(1.03);
+    transition: 0.2s;
+}
+
+.food-item img {
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.food-item-info {
+    padding: 20px;
+}
+
+.food-item-name p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.food-item-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+.stat-icon {
+    font-size: 16px;
+}
+
+.food-item-pricing {
+    margin-bottom: 15px;
+}
+
+.promotion-pricing {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 16px;
+}
+
+.promotion-price {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.regular-price {
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.food-item-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.add-to-cart-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background: #229954;
+}
+
+.quantity-controls-bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-btn {
+    background: #e74c3c;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.qty-btn:hover {
+    background: #c0392b;
+}
+
+.qty-btn img {
+    width: 15px;
+    height: 15px;
+}
+
+.quantity {
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Options badge */
+.options-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    z-index: 2;
+}
+
+/* Promotion badge */
+.promotion-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    z-index: 2;
+}
+
+/* Price range display */
+.price-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .food-item-info {
+        padding: 15px;
+    }
+    
+    .food-item-name p {
+        font-size: 18px;
+    }
+    
+    .food-item-stats {
+        gap: 10px;
+    }
+    
+    .stat-item {
+        font-size: 12px;
+    }
+}

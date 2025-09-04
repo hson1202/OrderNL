@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Cloudinary Upload</title>
+</head>
+<body>
+    <h2>Test Upload to Cloudinary</h2>
+    <input type="file" id="fileInput" accept="image/*">
+    <button onclick="testUpload()">Upload Test</button>
+    <div id="result"></div>
+
+    <script>
+        async function testUpload() {
+            const fileInput = document.getElementById('fileInput');
+            const resultDiv = document.getElementById('result');
+            
+            if (!fileInput.files[0]) {
+                alert('Please select a file first');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+            
+            try {
+                resultDiv.innerHTML = 'Uploading...';
+                
+                const response = await fetch('https://food-del-backend-4jjf.onrender.com/test-upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <h3>✅ Upload Success!</h3>
+                        <p><strong>URL:</strong> <a href="${data.file.url}" target="_blank">${data.file.url}</a></p>
+                        <p><strong>Public ID:</strong> ${data.file.public_id}</p>
+                        <p><strong>Size:</strong> ${data.file.size} bytes</p>
+                        <img src="${data.file.url}" style="max-width: 300px; margin-top: 10px;">
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <h3>❌ Upload Failed</h3>
+                        <p><strong>Error:</strong> ${data.error}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3>❌ Network Error</h3>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

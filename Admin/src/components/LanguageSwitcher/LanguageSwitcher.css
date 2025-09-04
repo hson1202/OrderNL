@@ -1,0 +1,164 @@
+.language-switcher {
+  position: relative;
+  display: inline-block;
+  z-index: 1004;
+}
+
+.language-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s ease;
+  min-width: 60px;
+  justify-content: center;
+}
+
+.language-button:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.language-button:active {
+  transform: translateY(0);
+}
+
+/* Flag Icons Styling */
+.language-button .fi {
+  font-size: 16px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.language-code {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 140px;
+  z-index: 1005;
+  overflow: hidden;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
+  transition: background-color 0.15s ease;
+  color: #374151;
+}
+
+.language-option:hover {
+  background: #f3f4f6;
+}
+
+.language-option.active {
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.language-option .fi {
+  font-size: 16px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.language-option .language-name {
+  flex: 1;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .language-button {
+    padding: 5px 8px;
+    font-size: 12px;
+    min-width: 50px;
+  }
+  
+  .language-button .fi {
+    font-size: 14px;
+  }
+  
+  .language-dropdown {
+    min-width: 120px;
+    right: -10px;
+  }
+  
+  .language-option {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  
+  .language-option .fi {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  .language-button {
+    padding: 4px 6px;
+    font-size: 11px;
+    min-width: 45px;
+  }
+  
+  .language-button .fi {
+    font-size: 12px;
+  }
+  
+  .language-code {
+    font-size: 11px;
+  }
+  
+  .language-dropdown {
+    min-width: 110px;
+    right: -5px;
+  }
+  
+  .language-option {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+  
+  .language-option .fi {
+    font-size: 12px;
+  }
+} 

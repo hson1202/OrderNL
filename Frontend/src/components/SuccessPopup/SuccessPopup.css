@@ -1,0 +1,386 @@
+/* Đảm bảo popup luôn hiển thị đúng trên mọi môi trường */
+.success-popup-overlay {
+  /* Force popup to be on top of everything */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Đảm bảo popup không bị ảnh hưởng bởi parent elements */
+  transform: translateZ(0);
+  will-change: transform;
+  /* Đảm bảo popup không bị ảnh hưởng bởi overflow */
+  overflow: visible !important;
+  animation: fadeIn 0.3s ease-out;
+  /* Đảm bảo popup không bị ảnh hưởng bởi các element khác */
+  isolation: isolate;
+  contain: layout style paint;
+  /* Đảm bảo popup hiển thị đúng trên mọi thiết bị */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+}
+
+.success-popup {
+  background: white;
+  border-radius: 20px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.4s ease-out;
+  /* Đảm bảo popup không bị ảnh hưởng bởi parent elements */
+  position: relative !important;
+  transform: translateZ(0) !important;
+  will-change: transform;
+  /* Đảm bảo popup không bị ảnh hưởng bởi overflow */
+  overflow: visible !important;
+  /* Đảm bảo popup không bị ảnh hưởng bởi các element khác */
+  isolation: isolate;
+  contain: layout style paint;
+  /* Đảm bảo popup hiển thị đúng trên mọi thiết bị */
+  -webkit-transform: translateZ(0) !important;
+  -moz-transform: translateZ(0) !important;
+  -ms-transform: translateZ(0) !important;
+  -o-transform: translateZ(0) !important;
+}
+
+.success-popup-content {
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+}
+
+/* Success Icon */
+.success-icon {
+  margin-bottom: 20px;
+  animation: bounceIn 0.6s ease-out 0.2s both;
+}
+
+.success-icon svg {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 4px 8px rgba(76, 175, 80, 0.3));
+}
+
+/* Success Title */
+.success-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  animation: slideInUp 0.5s ease-out 0.3s both;
+}
+
+/* Success Message */
+.success-message {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  animation: slideInUp 0.5s ease-out 0.4s both;
+}
+
+/* Delivery Time Section */
+.delivery-time {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  animation: slideInUp 0.5s ease-out 0.5s both;
+}
+
+.delivery-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.delivery-text {
+  text-align: left;
+}
+
+.delivery-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.delivery-time-text {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Order Details */
+.order-details {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  animation: slideInUp 0.5s ease-out 0.6s both;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #495057;
+  font-size: 14px;
+}
+
+.detail-value {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+  background: white;
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+/* Action Buttons */
+.success-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  animation: slideInUp 0.5s ease-out 0.7s both;
+}
+
+.btn-track, .btn-home {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 150px;
+}
+
+.btn-track {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-track:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-home {
+  background: #f8f9fa;
+  color: #495057;
+  border: 2px solid #dee2e6;
+}
+
+.btn-home:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #adb5bd;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: #f8f9fa;
+  color: #495057;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: scale(0.8) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .success-popup-overlay {
+    /* Đảm bảo popup luôn hiển thị đúng trên mobile */
+    position: fixed !important;
+    z-index: 9999 !important;
+  }
+  
+  .success-popup {
+    width: 95%;
+    margin: 20px;
+    /* Đảm bảo popup không bị ảnh hưởng bởi viewport */
+    position: relative !important;
+    transform: none !important;
+  }
+  
+  .success-popup-content {
+    padding: 30px 20px;
+  }
+  
+  .success-title {
+    font-size: 24px;
+  }
+  
+  .success-actions {
+    flex-direction: column;
+  }
+  
+  .btn-track, .btn-home {
+    max-width: none;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+  
+  .delivery-time {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .delivery-text {
+    text-align: center;
+  }
+  
+  .order-details {
+    padding: 15px;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .detail-value {
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .success-popup-overlay {
+    /* Đảm bảo popup luôn hiển thị đúng trên mobile nhỏ */
+    position: fixed !important;
+    z-index: 9999 !important;
+  }
+  
+  .success-popup {
+    width: 98%;
+    margin: 10px;
+    /* Đảm bảo popup không bị ảnh hưởng bởi viewport */
+    position: relative !important;
+    transform: none !important;
+  }
+  
+  .success-popup-content {
+    padding: 25px 15px;
+  }
+  
+  .success-title {
+    font-size: 22px;
+  }
+  
+  .success-message {
+    font-size: 14px;
+  }
+  
+  .delivery-time {
+    padding: 15px;
+  }
+  
+  .delivery-title {
+    font-size: 16px;
+  }
+  
+  .delivery-time-text {
+    font-size: 13px;
+  }
+  
+  .order-details {
+    padding: 12px;
+  }
+  
+  .detail-label, .detail-value {
+    font-size: 13px;
+  }
+  
+  .btn-track, .btn-home {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
