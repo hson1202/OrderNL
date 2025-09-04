@@ -30,9 +30,9 @@ const AboutUs = () => {
       {/* Hero Section */}
       <div className="about-hero">
         <div className="hero-content">
-          <h1 className="hero-title">About Viet Bowls</h1>
+          <h1 className="hero-title">About FastShipHu</h1>
           <p className="hero-subtitle">
-            Bringing authentic Vietnamese flavors to your table since 2020
+            Bringing delicious fast food to your table since 2020
           </p>
           <div className="hero-stats">
             <div className="stat-item">
@@ -54,7 +54,7 @@ const AboutUs = () => {
           <div className="image-placeholder">
             <img 
               src={IMAGES.hero}
-              alt="Viet Bowls Restaurant"
+              alt="FastShipHu Restaurant"
               className="hero-img"
             />
           </div>
@@ -67,8 +67,8 @@ const AboutUs = () => {
           <div className="section-text">
             <h2>Our Story</h2>
             <p>
-              Founded with a passion for authentic Vietnamese cuisine, Viet Bowls began as a small family restaurant
-              with a big dream - to share the rich flavors and traditions of Vietnam with our community.
+              Founded with a passion for delicious fast food, FastShipHu began as a small family restaurant
+              with a big dream - to share great food and fast service with our community.
             </p>
             <p>
               What started as a humble kitchen serving traditional pho and banh mi has grown into a beloved
@@ -119,9 +119,9 @@ const AboutUs = () => {
           <div className="section-text">
             <h2>Our Mission</h2>
             <p>
-              At Viet Bowls, we believe that food is more than just sustenance - it's a way to connect with
-              culture, tradition, and community. Our mission is to bring the authentic flavors of Vietnam to
-              your doorstep, making it easy for everyone to experience the rich culinary heritage of this
+              At FastShipHu, we believe that food is more than just sustenance - it's a way to connect with
+              culture, tradition, and community. Our mission is to bring delicious fast food to
+              your doorstep, making it easy for everyone to enjoy great meals with
               beautiful country.
             </p>
             <div className="mission-goals">

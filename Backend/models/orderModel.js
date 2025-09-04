@@ -8,7 +8,8 @@ const orderSchema = new mongoose.Schema({
     customerInfo: {
         name: { type: String, required: true },
         phone: { type: String, required: true },
-        email: { type: String, required: false }
+        email: { type: String, required: false },
+        restaurant: { type: String, required: true }
     },
     
     // Thông tin đơn hàng

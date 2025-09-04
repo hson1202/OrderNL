@@ -20,6 +20,7 @@ const Reservation = () => {
     customerName: '',
     phone: '',
     email: '',
+    restaurant: '',
     reservationDate: '',
     reservationTime: '',
     numberOfPeople: 1,
@@ -70,6 +71,12 @@ const Reservation = () => {
       if (digitsOnly.length < 10) {
         errors.phone = 'Phone number must contain at least 10 digits';
       }
+    }
+    
+    if (!reservationData.restaurant.trim()) {
+      errors.restaurant = 'Restaurant name is required';
+    } else if (reservationData.restaurant.trim().length < 2) {
+      errors.restaurant = 'Restaurant name must be at least 2 characters long';
     }
     
     if (!reservationData.email.trim()) {
@@ -377,6 +384,23 @@ const Reservation = () => {
                />
                {reservationErrors.phone && (
                  <span className="error-text">{reservationErrors.phone}</span>
+               )}
+             </div>
+             
+             <div className="form-group">
+               <label htmlFor="restaurant">Tên nhà hàng của bạn *</label>
+               <input
+                 type="text"
+                 id="restaurant"
+                 name="restaurant"
+                 value={reservationData.restaurant}
+                 onChange={handleReservationChange}
+                 required
+                 placeholder="Nhập tên nhà hàng của bạn"
+                 className={reservationErrors.restaurant ? 'error' : ''}
+               />
+               {reservationErrors.restaurant && (
+                 <span className="error-text">{reservationErrors.restaurant}</span>
                )}
              </div>
             

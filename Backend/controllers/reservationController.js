@@ -65,13 +65,13 @@ const generateAvailableTimeSlots = (date) => {
 export const createReservation = async (req, res) => {
     try {
         console.log('📝 Creating reservation with data:', req.body)
-        const { customerName, phone, email, reservationDate, reservationTime, numberOfPeople, note } = req.body
+        const { customerName, phone, email, restaurant, reservationDate, reservationTime, numberOfPeople, note } = req.body
 
         // Validate required fields
-        if (!customerName || !phone || !email || !reservationDate || !reservationTime || !numberOfPeople) {
+        if (!customerName || !phone || !email || !restaurant || !reservationDate || !reservationTime || !numberOfPeople) {
             return res.status(400).json({ 
                 success: false, 
-                message: "All required fields must be provided" 
+                message: "All required fields including restaurant name must be provided" 
             })
         }
 
@@ -153,6 +153,7 @@ export const createReservation = async (req, res) => {
             customerName: customerName.trim(),
             phone: phone.trim(),
             email: email.toLowerCase().trim(),
+            restaurant: restaurant.trim(),
             reservationDate: reservationDateTime,
             reservationTime,
             numberOfPeople,

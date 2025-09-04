@@ -30,10 +30,10 @@ const placeOrder = async (req,res) => {
             });
         }
 
-        if (!customerInfo || !customerInfo.name || !customerInfo.phone) {
+        if (!customerInfo || !customerInfo.name || !customerInfo.phone || !customerInfo.restaurant) {
             return res.status(400).json({
                 success: false,
-                message: "Customer information is required"
+                message: "Customer information including restaurant name is required"
             });
         }
 

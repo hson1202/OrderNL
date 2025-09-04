@@ -137,6 +137,7 @@ const Orders = ({url}) => {
       filtered = filtered.filter(order => 
         order.customerInfo?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         order.customerInfo?.phone?.includes(searchTerm) ||
+        order.customerInfo?.restaurant?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         order._id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         order.shortOrderId?.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -498,6 +499,10 @@ const Orders = ({url}) => {
                   <div className="detail-item">
                     <span className="detail-label">{t('orders.phone')}:</span>
                     <span className="detail-value">{selectedOrder.customerInfo?.phone || 'N/A'}</span>
+                  </div>
+                  <div className="detail-item">
+                    <span className="detail-label">Nhà hàng:</span>
+                    <span className="detail-value">{selectedOrder.customerInfo?.restaurant || 'N/A'}</span>
                   </div>
                   {selectedOrder.orderType === 'guest' && selectedOrder.customerInfo?.email && (
                     <div className="detail-item">

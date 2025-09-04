@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-content">
             <div className="footer-content-left">
                 <img src={assets.logo} alt="" />
-                <p>Viet Bowls is a Vietnamese food delivery platform that brings authentic Vietnamese cuisine to your doorstep. We offer a wide variety of traditional dishes, from pho and banh mi to fresh spring rolls and more.</p>
+                <p>FastShipHu is a fast food delivery platform that brings delicious meals to your doorstep. We offer a wide variety of dishes, from burgers and pizza to fresh salads and more.</p>
                 <div className="footer-social-icons">
                     <img src={assets.facebook_icon} alt="" />
                     <img src={assets.twitter_icon} alt="" />
@@ -28,12 +28,12 @@ const Footer = () => {
                 <h2>GET IN TOUCH</h2>
                 <ul>
                     <li>+1 212-456-7890</li>
-                    <li>contact@vietbowls.com</li>
+                    <li>contact@fastshiphu.com</li>
                 </ul>
             </div>
         </div>
         <hr />
-        <p className="footer-copyright">Copyright 2025 © Viet Bowls - All right reserved.</p>
+        <p className="footer-copyright">Copyright 2025 © FastShipHu - All right reserved.</p>
     </div>
   )
 }

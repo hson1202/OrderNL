@@ -19,7 +19,8 @@ const PlaceOrder = () => {
     state: "",
     zipcode: "",
     country: "",
-    phone: ""
+    phone: "",
+    restaurant: ""
   })
   const [orderType, setOrderType] = useState(token ? 'registered' : 'guest'); // Tự động set 'registered' nếu đã login
   const [trackingCode, setTrackingCode] = useState('');
@@ -40,7 +41,7 @@ const PlaceOrder = () => {
     setIsSubmitting(true);
     
     // Validate required fields
-    if (!data.firstName || !data.lastName || !data.street || !data.city || !data.state || !data.zipcode || !data.country || !data.phone) {
+    if (!data.firstName || !data.lastName || !data.street || !data.city || !data.state || !data.zipcode || !data.country || !data.phone || !data.restaurant) {
       alert('Please fill in all required fields');
       setIsSubmitting(false);
       return;
@@ -302,6 +303,15 @@ const PlaceOrder = () => {
             title="Please enter a valid phone number (at least 10 digits, maximum unlimited)"
             autoComplete="tel"
             maxLength="20"
+          />
+          <input 
+            required 
+            name='restaurant' 
+            onChange={onChangeHandler} 
+            value={data.restaurant} 
+            type="text" 
+            placeholder="Tên nhà hàng của bạn"
+            autoComplete="organization"
           />
           
           {/* Thông báo về dò đơn hàng */}

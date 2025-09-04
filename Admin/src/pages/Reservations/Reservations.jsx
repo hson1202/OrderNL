@@ -222,7 +222,8 @@ const Reservations = ({ url }) => {
     const matchesSearch = 
       reservation.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       reservation.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      reservation.phone.includes(searchTerm)
+      reservation.phone.includes(searchTerm) ||
+      (reservation.restaurant && reservation.restaurant.toLowerCase().includes(searchTerm.toLowerCase()))
     
     return matchesStatus && matchesSearch
   })
@@ -377,6 +378,7 @@ const Reservations = ({ url }) => {
                   <div className="contact-info">
                     <div>{reservation.email}</div>
                     <div>{reservation.phone}</div>
+                    <div className="restaurant-info">🏪 {reservation.restaurant || 'N/A'}</div>
                   </div>
                 </td>
                 <td>
@@ -474,6 +476,10 @@ const Reservations = ({ url }) => {
                 <div className="info-row">
                   <span className="info-label">{t('reservations.modal.email')}:</span>
                   <span className="info-value">{selectedReservation.email}</span>
+                </div>
+                <div className="info-row">
+                  <span className="info-label">Nhà hàng:</span>
+                  <span className="info-value">{selectedReservation.restaurant || 'N/A'}</span>
                 </div>
               </div>
 
