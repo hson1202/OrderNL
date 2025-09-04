@@ -1,7 +1,6 @@
 import React , { useState }from 'react'
 import Navbar from './pages/Navbar/Navbar';
-import { Route, Routes } from 'react-router-dom';
-import Home from './pages/Home/Home'
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Menu from './pages/Menu/Menu'
 import AboutUs from './pages/AboutUs/AboutUs'
 // import Blog from './pages/Blog/Blog'
@@ -28,8 +27,9 @@ const App = () => {
     <div className='app'>
       <Navbar setShowLogin={setShowLogin}/>  
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Menu/>}/>
         <Route path='/menu' element={<Menu/>}/>
+        <Route path='/home' element={<Navigate to="/" replace />}/>
         <Route path='/about' element={<AboutUs/>}/>
         {/* <Route path='/blog' element={<Blog/>}/> */}
         {/* <Route path='/blog/:slug' element={<BlogDetail/>}/> */}
