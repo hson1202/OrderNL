@@ -54,7 +54,7 @@ const Blog = () => {
       {/* Hero Section */}
       <div className="blog-hero">
         <div className="hero-content">
-          <h1>Viet Bowls Blog</h1>
+          <h1>ORDER Blog</h1>
           <p>Discover the latest news, recipes, and stories from our Vietnamese kitchen</p>
         </div>
       </div>

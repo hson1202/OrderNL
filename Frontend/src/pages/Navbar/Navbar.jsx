@@ -63,8 +63,8 @@ const Navbar = ({setShowLogin}) => {
     return (
 
         <div className='navbar'>
-            <Link to='/' onClick={() => handleNavLinkClick("menu")}>
-                <img src={assets.logo} alt='' className='logo'/>
+            <Link to='/' onClick={() => handleNavLinkClick("menu")} className='logo-text'>
+                ORDER
             </Link>
 
             {/* Mobile center language switcher */}

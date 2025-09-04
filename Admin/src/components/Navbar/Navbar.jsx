@@ -20,7 +20,7 @@ const Navbar = ({ setIsAuthenticated }) => {
   return (
     <div className='navbar'>
         <div className="navbar-logo">
-          <h1>Viet Bowls</h1>
+          <h1>ORDER</h1>
         </div>
         <div className="navbar-right">
           <LanguageSwitcher />

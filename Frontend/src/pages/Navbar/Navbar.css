@@ -13,8 +13,11 @@
     display: none;
 }
 
-.navbar .logo {
-    width: 150px;
+.navbar .logo-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #49557e;
+    text-decoration: none;
     flex-shrink: 0;
 }
 

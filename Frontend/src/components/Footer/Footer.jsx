@@ -7,8 +7,8 @@ const Footer = () => {
     <div className='footer' id='footer'>
         <div className="footer-content">
             <div className="footer-content-left">
-                <img src={assets.logo} alt="" />
-                <p>FastShipHu is a fast food delivery platform that brings delicious meals to your doorstep. We offer a wide variety of dishes, from burgers and pizza to fresh salads and more.</p>
+                <h2>ORDER</h2>
+                <p>ORDER is a fast food delivery platform that brings delicious meals to your doorstep. We offer a wide variety of dishes, from burgers and pizza to fresh salads and more.</p>
                 <div className="footer-social-icons">
                     <img src={assets.facebook_icon} alt="" />
                     <img src={assets.twitter_icon} alt="" />
@@ -33,7 +33,7 @@ const Footer = () => {
             </div>
         </div>
         <hr />
-        <p className="footer-copyright">Copyright 2025 © FastShipHu - All right reserved.</p>
+        <p className="footer-copyright">Copyright 2025 © ORDER - All right reserved.</p>
     </div>
   )
 }

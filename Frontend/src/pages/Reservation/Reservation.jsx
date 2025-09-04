@@ -269,7 +269,7 @@ const Reservation = () => {
         </div>
         <div className="hero-content">
           <h1>Book Your Table</h1>
-          <p>Reserve a table at Viet Bowls for an unforgettable dining experience</p>
+          <p>Reserve a table at ORDER for an unforgettable dining experience</p>
         </div>
       </div>
 
@@ -308,7 +308,7 @@ const Reservation = () => {
                  <h3>Reservation Confirmed!</h3>
                  
                  <p>
-                   Thank you for choosing Viet Bowls! Your table has been reserved successfully.
+                   Thank you for choosing ORDER! Your table has been reserved successfully.
                  </p>
                  
                  <p>

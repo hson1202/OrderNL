@@ -155,7 +155,7 @@ const AboutUs = () => {
       <div className="about-section values-section">
         <div className="section-header">
           <h2>Our Core Values</h2>
-          <p>These principles guide everything we do at Viet Bowls</p>
+          <p>These principles guide everything we do at ORDER</p>
         </div>
         <div className="values-grid">
           <div className="value-card">
@@ -185,7 +185,7 @@ const AboutUs = () => {
       <div className="about-section team-section">
         <div className="section-header">
           <h2>Meet Our Team</h2>
-          <p>The passionate people behind Viet Bowls</p>
+          <p>The passionate people behind ORDER</p>
         </div>
         <div className="team-grid">
           <div className="team-member">
