@@ -33,7 +33,7 @@ const Cart = () => {
 
                   <div className="cart-items-title  cart-items-item">
                   <img src={(item.image && item.image.startsWith('http')) ? item.image : (url+"/images/"+item.image)} alt=''/>
-                  <p>{item.name}</p>
+                  <p>{item.sku} - {item.name}</p>
                   <p>€{item.isPromotion && item.promotionPrice ? item.promotionPrice : item.price}</p>
                   <p>{cartItems[item._id]}</p>
                   <p>€{(item.isPromotion && item.promotionPrice ? item.promotionPrice : item.price)*cartItems[item._id]}</p>

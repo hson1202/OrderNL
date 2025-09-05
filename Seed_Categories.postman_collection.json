@@ -1,0 +1,110 @@
+{
+  "info": {
+    "name": "Seed Categories",
+    "_postman_id": "e9f9f8cc-0000-4000-a111-seedcats",
+    "description": "Import then Run with categories_seed.json (Runner). Variables: baseUrl, addCatPath",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add Category (Runner)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}{{addCatPath}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "{{addCatPath}}"
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "{{name}}",
+              "type": "text"
+            },
+            {
+              "key": "description",
+              "value": "{{description}}",
+              "type": "text"
+            },
+            {
+              "key": "sortOrder",
+              "value": "{{sortOrder}}",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add ALL Categories (single click)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const items = [{\"name\": \"Pizza\", \"description\": \"Các loại pizza thơm ngon\", \"sortOrder\": 1}, {\"name\": \"Burger\", \"description\": \"Burger và sandwich\", \"sortOrder\": 2}, {\"name\": \"Pasta\", \"description\": \"Mì Ý và các loại pasta\", \"sortOrder\": 3}, {\"name\": \"Salad\", \"description\": \"Salad tươi ngon\", \"sortOrder\": 4}, {\"name\": \"Soup\", \"description\": \"Các loại súp và canh\", \"sortOrder\": 5}, {\"name\": \"Rice\", \"description\": \"Cơm và các món từ gạo\", \"sortOrder\": 6}, {\"name\": \"Noodles\", \"description\": \"Phở, bún, mì các loại\", \"sortOrder\": 7}, {\"name\": \"Seafood\", \"description\": \"Hải sản tươi ngon\", \"sortOrder\": 8}, {\"name\": \"Meat\", \"description\": \"Thịt bò, heo, gà các loại\", \"sortOrder\": 9}, {\"name\": \"Vegetarian\", \"description\": \"Món chay và rau củ\", \"sortOrder\": 10}, {\"name\": \"Dessert\", \"description\": \"Tráng miệng và bánh ngọt\", \"sortOrder\": 11}, {\"name\": \"Beverage\", \"description\": \"Nước uống và đồ giải khát\", \"sortOrder\": 12}];",
+              "const baseUrl = pm.variables.get('baseUrl');",
+              "const path = pm.variables.get('addCatPath');",
+              "let ok=0, fail=0;",
+              "(async () => {",
+              " for (const it of items){",
+              "  try{",
+              "   const formData = new FormData();",
+              "   formData.append('name', it.name);",
+              "   formData.append('description', it.description);",
+              "   formData.append('sortOrder', it.sortOrder);",
+              "   ",
+              "   const res = await new Promise((resolve,reject)=>{",
+              "     pm.sendRequest({ url: `${baseUrl}${path}`, method:'POST', header:{}, body:{mode:'formdata', formdata:[{key:'name',value:it.name,type:'text'},{key:'description',value:it.description,type:'text'},{key:'sortOrder',value:it.sortOrder.toString(),type:'text'}]} }, (err,r)=>err?reject(err):resolve(r));",
+              "   });",
+              "   if (res.code>=200 && res.code<300) ok++; else fail++;",
+              "  }catch(e){ fail++; }",
+              " }",
+              " console.log(`Done CATEGORIES. OK=${ok} FAIL=${fail}`);",
+              " pm.test('Seed categories completed', function(){ pm.expect(fail).to.be.below(items.length); });",
+              "})();"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}{{addCatPath}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "{{addCatPath}}"
+          ]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "description": "Click Send once to create all categories."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000"
+    },
+    {
+      "key": "addCatPath",
+      "value": "/api/category"
+    }
+  ]
+}

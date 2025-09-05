@@ -59,10 +59,10 @@ const FoodDisplay = ({category, onViewDetails}) => {
                     <FoodItem 
                         key={index} 
                         id={item._id} 
-                        name={item.name}
-                        nameVI={item.nameVI}
-                        nameEN={item.nameEN}
-                        nameSK={item.nameSK}
+                        name={`${item.sku} - ${item.name}`}
+                        nameVI={`${item.sku} - ${item.nameVI || item.name}`}
+                        nameEN={`${item.sku} - ${item.nameEN || item.name}`}
+                        nameSK={`${item.sku} - ${item.nameSK || item.name}`}
                         description={item.description} 
                         price={item.price} 
                         image={item.image}
@@ -73,6 +73,8 @@ const FoodDisplay = ({category, onViewDetails}) => {
                         soldCount={item.soldCount}
                         likes={item.likes}
                         options={item.options}
+                        unit={item.unit}
+                        unitValue={item.unitValue}
                         onViewDetails={onViewDetails}
                     />
                 ))}

@@ -90,16 +90,21 @@ const CartPopup = ({ onClose }) => {
   // Function to get localized name
   const getLocalizedName = (food) => {
     const currentLang = i18n.language;
+    let baseName;
     switch (currentLang) {
       case 'vi':
-        return food.nameVI || food.name;
+        baseName = food.nameVI || food.name;
+        break;
       case 'en':
-        return food.nameEN || food.name;
+        baseName = food.nameEN || food.name;
+        break;
       case 'sk':
-        return food.nameSK || food.name;
+        baseName = food.nameSK || food.name;
+        break;
       default:
-        return food.name;
+        baseName = food.name;
     }
+    return `${food.sku} - ${baseName}`;
   };
 
   const formatPrice = (price) => {

@@ -12,7 +12,10 @@ const Add = ({url}) => {
         name:"",
         description:"",
         price:"",
-        category:"Salad"
+        category:"Salad",
+        unit:"cái",
+        unitValue:1,
+        customUnit:""
     })
 
         const onChangeHandler=(event)=>{
@@ -29,6 +32,8 @@ const Add = ({url}) => {
             formData.append("description",data.description)
             formData.append("price",Number(data.price))
             formData.append("category",data.category)
+            formData.append("unit",data.customUnit || data.unit)
+            formData.append("unitValue",Number(data.unitValue))
             formData.append("image",image)
             const response=await axios.post(`${config.BACKEND_URL}/api/food/add`,formData)
             if(response.data.success){
@@ -36,7 +41,10 @@ const Add = ({url}) => {
                     name:"",
                     description:"",
                     price:"",
-                    category:"Salad"
+                    category:"Salad",
+                    unit:"cái",
+                    unitValue:1,
+                    customUnit:""
                 })
                 setImage(false)
                 toast.success(response.data.message)
@@ -85,6 +93,34 @@ const Add = ({url}) => {
                     <input onChange={onChangeHandler} value={data.price} type="Number" name='price' placeholder='€20'/>
                 </div>
             </div>
+            <div className="add-unit-section">
+                <div className="add-unit flex-col">
+                    <p>Đơn vị</p>
+                    <select onChange={onChangeHandler} name="unit" value={data.unit}>
+                        <option value="cái">Cái</option>
+                        <option value="kg">Kilogram (kg)</option>
+                        <option value="g">Gram (g)</option>
+                        <option value="ml">Milliliter (ml)</option>
+                        <option value="l">Liter (l)</option>
+                        <option value="tấn">Tấn</option>
+                        <option value="gói">Gói</option>
+                        <option value="hộp">Hộp</option>
+                        <option value="chai">Chai</option>
+                        <option value="lon">Lon</option>
+                        <option value="custom">Khác...</option>
+                    </select>
+                </div>
+                <div className="add-unit-value flex-col">
+                    <p>Số lượng đơn vị</p>
+                    <input onChange={onChangeHandler} value={data.unitValue} type="Number" name='unitValue' placeholder='1' min="0.01" step="0.01"/>
+                </div>
+            </div>
+            {data.unit === 'custom' && (
+                <div className="add-custom-unit flex-col">
+                    <p>Nhập đơn vị tùy chỉnh</p>
+                    <input onChange={onChangeHandler} value={data.customUnit} type="text" name='customUnit' placeholder='Ví dụ: thùng, bịch, lọ...'/>
+                </div>
+            )}
                 <button type='submit' className='add-btn'>Add</button>
         </form>
 

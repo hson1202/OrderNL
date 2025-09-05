@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 import { StoreContext } from '../../Context/StoreContext'
 import { useTranslation } from 'react-i18next'
 
-const FoodItem = ({id, name, nameVI, nameEN, nameSK, price, description, image, sku, isPromotion, originalPrice, promotionPrice, soldCount = 0, likes = 0, options, onViewDetails, compact = false}) => {
+const FoodItem = ({id, name, nameVI, nameEN, nameSK, price, description, image, sku, isPromotion, originalPrice, promotionPrice, soldCount = 0, likes = 0, options, unit, unitValue, onViewDetails, compact = false}) => {
   const {cartItems, addToCart, removeFromCart, url} = useContext(StoreContext);
   const { i18n, t } = useTranslation();
   
@@ -22,6 +22,15 @@ const FoodItem = ({id, name, nameVI, nameEN, nameSK, price, description, image, 
       default:
         return name;
     }
+  };
+
+  // Function to format product name with unit
+  const getFormattedName = () => {
+    const localizedName = getLocalizedName();
+    if (unit && unitValue) {
+      return `${localizedName} - ${unitValue}${unit}`;
+    }
+    return localizedName;
   };
 
   const formatPrice = (price) => {
@@ -157,9 +166,9 @@ const FoodItem = ({id, name, nameVI, nameEN, nameSK, price, description, image, 
       <div className="food-item compact" onClick={handleCardClick}>
         <div className="food-row">
           <div className="thumb">
-            <img src={imgSrc} alt={getLocalizedName()} loading="lazy" decoding="async" />
+            <img src={imgSrc} alt={getFormattedName()} loading="lazy" decoding="async" />
           </div>
-          <div className="title">{getLocalizedName()}</div>
+          <div className="title">{getFormattedName()}</div>
           <div className="price-now">{formatPrice(currentPrice)}</div>
         </div>
 
@@ -182,7 +191,7 @@ const FoodItem = ({id, name, nameVI, nameEN, nameSK, price, description, image, 
       <div className="food-item-img-container">
         <img 
           src={imgSrc}
-          alt={getLocalizedName()}
+          alt={getFormattedName()}
           className="food-item-image"
         />
         
@@ -203,7 +212,7 @@ const FoodItem = ({id, name, nameVI, nameEN, nameSK, price, description, image, 
        
       <div className="food-item-info">  
         <div className="food-item-name">  
-          <p>{getLocalizedName()}</p>  
+          <p>{getFormattedName()}</p>  
         </div>  
         
         <div className="food-item-stats">

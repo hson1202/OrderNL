@@ -1199,4 +1199,122 @@
   .category-bar .category-placeholder {
     font-size: 16px;
   }
+}
+
+/* Load More Button Styles */
+.load-more-container {
+  text-align: center;
+  padding: 40px 20px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.load-more-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.load-more-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.load-more-btn:hover::before {
+  left: 100%;
+}
+
+.load-more-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+.load-more-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.load-more-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Pagination Info Styles */
+.pagination-info-container {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 0.9rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.pagination-info {
+  color: #888;
+  font-size: 0.85rem;
+  margin-left: 10px;
+  font-style: italic;
+}
+
+/* Search Results Info Enhancement */
+.search-results-info {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  animation: fadeIn 0.5s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Responsive Load More Button */
+@media (max-width: 768px) {
+  .load-more-container {
+    padding: 30px 15px;
+  }
+  
+  .load-more-btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .load-more-container {
+    padding: 25px 10px;
+  }
+  
+  .load-more-btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+    min-width: 160px;
+  }
+  
+  .search-results-info {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .pagination-info {
+    margin-left: 0;
+  }
 } 

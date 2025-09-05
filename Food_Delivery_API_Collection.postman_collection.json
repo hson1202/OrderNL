@@ -1,0 +1,629 @@
+{
+  "info": {
+    "name": "Food Delivery API Collection",
+    "_postman_id": "food-delivery-api-collection",
+    "description": "Complete API collection for Food Delivery system - Categories, Products, Orders, Users",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/category",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "category"]
+            }
+          }
+        },
+        {
+          "name": "Add Category",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Pizza",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Các loại pizza thơm ngon",
+                  "type": "text"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/category",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "category"]
+            }
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Pizza Updated",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Các loại pizza thơm ngon đã cập nhật",
+                  "type": "text"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "1",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/category/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "category", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "CATEGORY_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/category/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "category", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "CATEGORY_ID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/food/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "food", "list"]
+            }
+          }
+        },
+        {
+          "name": "Add Product (Simple)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "sku",
+                  "value": "PIZZA001",
+                  "type": "text"
+                },
+                {
+                  "key": "name",
+                  "value": "Pizza Margherita",
+                  "type": "text"
+                },
+                {
+                  "key": "nameVI",
+                  "value": "Pizza Margherita",
+                  "type": "text"
+                },
+                {
+                  "key": "nameEN",
+                  "value": "Margherita Pizza",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Pizza cổ điển với phô mai mozzarella và cà chua",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "120000",
+                  "type": "text"
+                },
+                {
+                  "key": "category",
+                  "value": "Pizza",
+                  "type": "text"
+                },
+                {
+                  "key": "quantity",
+                  "value": "50",
+                  "type": "text"
+                },
+                {
+                  "key": "unit",
+                  "value": "cái",
+                  "type": "text"
+                },
+                {
+                  "key": "unitValue",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "isPromotion",
+                  "value": "false",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/food/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "food", "add"]
+            }
+          }
+        },
+        {
+          "name": "Add Product (With Options)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "sku",
+                  "value": "PIZZA002",
+                  "type": "text"
+                },
+                {
+                  "key": "name",
+                  "value": "Pizza Custom",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Pizza có thể tùy chọn size và topping",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "150000",
+                  "type": "text"
+                },
+                {
+                  "key": "category",
+                  "value": "Pizza",
+                  "type": "text"
+                },
+                {
+                  "key": "quantity",
+                  "value": "30",
+                  "type": "text"
+                },
+                {
+                  "key": "options",
+                  "value": "[{\"name\":\"Size\",\"type\":\"select\",\"defaultChoiceCode\":\"medium\",\"choices\":[{\"code\":\"small\",\"label\":\"Small\",\"price\":0},{\"code\":\"medium\",\"label\":\"Medium\",\"price\":20000},{\"code\":\"large\",\"label\":\"Large\",\"price\":40000}],\"pricingMode\":\"add\"},{\"name\":\"Topping\",\"type\":\"select\",\"defaultChoiceCode\":\"cheese\",\"choices\":[{\"code\":\"cheese\",\"label\":\"Extra Cheese\",\"price\":15000},{\"code\":\"pepperoni\",\"label\":\"Pepperoni\",\"price\":25000},{\"code\":\"mushroom\",\"label\":\"Mushroom\",\"price\":20000}],\"pricingMode\":\"add\"}]",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/food/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "food", "add"]
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "sku",
+                  "value": "PIZZA001",
+                  "type": "text"
+                },
+                {
+                  "key": "name",
+                  "value": "Pizza Margherita Deluxe",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Pizza cổ điển với phô mai mozzarella và cà chua tươi",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "130000",
+                  "type": "text"
+                },
+                {
+                  "key": "category",
+                  "value": "Pizza",
+                  "type": "text"
+                },
+                {
+                  "key": "quantity",
+                  "value": "45",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/food/edit/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "food", "edit", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "PRODUCT_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/food/remove/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "food", "remove", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "PRODUCT_ID_HERE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Product Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"PRODUCT_ID_HERE\",\n  \"status\": \"inactive\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/food/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "food", "status"]
+            }
+          }
+        },
+        {
+          "name": "Update Product Quantity",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"PRODUCT_ID_HERE\",\n  \"quantity\": 100\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/food/quantity",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "food", "quantity"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Get All Orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/order",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "order"]
+            }
+          }
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"foodId\": \"PRODUCT_ID_HERE\",\n      \"quantity\": 2,\n      \"price\": 120000\n    }\n  ],\n  \"totalAmount\": 240000,\n  \"deliveryDetails\": {\n    \"name\": \"Nguyễn Văn A\",\n    \"phone\": \"0123456789\",\n    \"address\": \"123 Đường ABC, Quận 1, TP.HCM\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/order",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "order"]
+            }
+          }
+        },
+        {
+          "name": "Update Order Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"ORDER_ID_HERE\",\n  \"status\": \"delivered\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/order/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "order", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "ORDER_ID_HERE"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nguyễn Văn A\",\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\",\n  \"phone\": \"0123456789\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/user/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "user", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/user/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "user", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN_HERE"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/user/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "user", "profile"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bulk Operations",
+      "item": [
+        {
+          "name": "Seed Categories",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Pizza",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "Các loại pizza",
+                  "type": "text"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "1",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/category",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "category"]
+            }
+          }
+        },
+        {
+          "name": "Seed Products (Bulk)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const products = [",
+                  "  { sku: 'PIZZA001', name: 'Pizza Margherita', nameVI: 'Pizza Margherita', nameEN: 'Margherita Pizza', description: 'Pizza cổ điển với phô mai mozzarella', price: 120000, category: 'Pizza', quantity: 50, unit: 'cái', unitValue: 1, isPromotion: false, soldCount: 0 },",
+                  "  { sku: 'PIZZA002', name: 'Pizza Pepperoni', nameVI: 'Pizza Pepperoni', nameEN: 'Pepperoni Pizza', description: 'Pizza với pepperoni thơm ngon', price: 140000, category: 'Pizza', quantity: 40, unit: 'cái', unitValue: 1, isPromotion: false, soldCount: 0 },",
+                  "  { sku: 'BURGER001', name: 'Burger Classic', nameVI: 'Burger Cổ Điển', nameEN: 'Classic Burger', description: 'Burger cổ điển với thịt bò', price: 80000, category: 'Burger', quantity: 60, unit: 'cái', unitValue: 1, isPromotion: false, soldCount: 0 },",
+                  "  { sku: 'PASTA001', name: 'Pasta Carbonara', nameVI: 'Mì Ý Carbonara', nameEN: 'Carbonara Pasta', description: 'Mì Ý sốt kem thịt xông khói', price: 90000, category: 'Pasta', quantity: 35, unit: 'đĩa', unitValue: 1, isPromotion: false, soldCount: 0 },",
+                  "  { sku: 'SALAD001', name: 'Caesar Salad', nameVI: 'Salad Caesar', nameEN: 'Caesar Salad', description: 'Salad Caesar tươi ngon', price: 60000, category: 'Salad', quantity: 25, unit: 'đĩa', unitValue: 1, isPromotion: false, soldCount: 0 }",
+                  "];",
+                  "",
+                  "const baseUrl = pm.variables.get('baseUrl');",
+                  "const path = '/api/food/add';",
+                  "let success = 0, failed = 0;",
+                  "",
+                  "(async () => {",
+                  "  for (const product of products) {",
+                  "    try {",
+                  "      const response = await new Promise((resolve, reject) => {",
+                  "        pm.sendRequest({",
+                  "          url: `${baseUrl}${path}`,",
+                  "          method: 'POST',",
+                  "          header: { 'Content-Type': 'application/json' },",
+                  "          body: { mode: 'raw', raw: JSON.stringify(product) }",
+                  "        }, (err, res) => err ? reject(err) : resolve(res));",
+                  "      });",
+                  "      ",
+                  "      if (response.code >= 200 && response.code < 300) {",
+                  "        success++;",
+                  "        console.log(`✅ Added: ${product.name}`);",
+                  "      } else {",
+                  "        failed++;",
+                  "        console.log(`❌ Failed: ${product.name} - ${response.code}`);",
+                  "      }",
+                  "    } catch (error) {",
+                  "      failed++;",
+                  "      console.log(`❌ Error: ${product.name} - ${error.message}`);",
+                  "    }",
+                  "  }",
+                  "  ",
+                  "  console.log(`\\n📊 Bulk Add Results: ${success} success, ${failed} failed`);",
+                  "  pm.test('Bulk add products completed', function() {",
+                  "    pm.expect(failed).to.be.below(products.length);",
+                  "  });",
+                  "})();"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/food/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "food", "add"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:4000"
+    }
+  ]
+}

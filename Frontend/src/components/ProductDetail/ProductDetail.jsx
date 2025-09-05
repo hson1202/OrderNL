@@ -111,16 +111,21 @@ const ProductDetail = ({ product, onClose }) => {
   // Function to get the appropriate name based on current language
   const getLocalizedName = () => {
     const currentLang = i18n.language;
+    let baseName;
     switch (currentLang) {
       case 'vi':
-        return product.nameVI || product.name;
+        baseName = product.nameVI || product.name;
+        break;
       case 'en':
-        return product.nameEN || product.name;
+        baseName = product.nameEN || product.name;
+        break;
       case 'sk':
-        return product.nameSK || product.name;
+        baseName = product.nameSK || product.name;
+        break;
       default:
-        return product.name;
+        baseName = product.name;
     }
+    return `${product.sku} - ${baseName}`;
   };
 
   const formatPrice = (price) => {

@@ -24,6 +24,10 @@ const Menu = () => {
   const [loading, setLoading] = useState(true)
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [showCartPopup, setShowCartPopup] = useState(false)
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage] = useState(8)
+  const [hasMore, setHasMore] = useState(true)
 
   useEffect(() => {
     fetchCategories()
@@ -70,9 +74,27 @@ const Menu = () => {
     const localizedName = getLocalizedName(food);
     const matchesSearch = localizedName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          food.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         food.description.toLowerCase().includes(searchTerm.toLowerCase())
+                         food.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         food.sku.toLowerCase().includes(searchTerm.toLowerCase())
     return matchesCategory && matchesSearch
   })
+
+  // Calculate pagination
+  const totalItems = filteredFoods.length
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
+  const displayedFoods = filteredFoods.slice(0, currentPage * itemsPerPage)
+  const hasMoreItems = currentPage < totalPages
+
+  // Reset pagination when filters change
+  useEffect(() => {
+    setCurrentPage(1)
+    setHasMore(true)
+  }, [selectedCategory, searchTerm])
+
+  // Update hasMore when filteredFoods changes
+  useEffect(() => {
+    setHasMore(currentPage < totalPages)
+  }, [currentPage, totalPages])
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category)
@@ -102,6 +124,12 @@ const Menu = () => {
 
   const closeCartPopup = () => {
     setShowCartPopup(false)
+  }
+
+  const handleLoadMore = () => {
+    if (hasMoreItems) {
+      setCurrentPage(prev => prev + 1)
+    }
   }
 
   const formatPrice = (price) => {
@@ -164,6 +192,11 @@ const Menu = () => {
             {searchTerm && (
               <div className="search-results-info">
                 Found {filteredFoods.length} result{filteredFoods.length !== 1 ? 's' : ''} for "{searchTerm}"
+                {hasMoreItems && (
+                  <span className="pagination-info">
+                    (Showing {displayedFoods.length} of {totalItems})
+                  </span>
+                )}
               </div>
             )}
           </div>
@@ -213,18 +246,19 @@ const Menu = () => {
             </button>
           </div>
         ) : (
-          <div className="food-grid">
-            {filteredFoods.map((food, index) => (
+          <>
+            <div className="food-grid">
+              {displayedFoods.map((food, index) => (
               <div key={food._id} className="food-item-wrapper">
                 {/* Debug: Log food data */}
                 {console.log('🔍 Menu - Food data:', food)}
                 {console.log('🔍 Menu - Food options:', food.options)}
                 <FoodItem 
                   id={food._id} 
-                  name={food.name}
-                  nameVI={food.nameVI}
-                  nameEN={food.nameEN}
-                  nameSK={food.nameSK}
+                  name={`${food.sku} - ${food.name}`}
+                  nameVI={`${food.sku} - ${food.nameVI || food.name}`}
+                  nameEN={`${food.sku} - ${food.nameEN || food.name}`}
+                  nameSK={`${food.sku} - ${food.nameSK || food.name}`}
                   description={food.description} 
                   price={food.price} 
                   image={food.image}
@@ -235,11 +269,33 @@ const Menu = () => {
                   soldCount={food.soldCount}
                   likes={food.likes}
                   options={food.options}
+                  unit={food.unit}
+                  unitValue={food.unitValue}
                   onViewDetails={handleViewDetails}
                 />
               </div>
             ))}
-          </div>
+            </div>
+            
+            {/* Load More Button */}
+            {hasMoreItems && (
+              <div className="load-more-container">
+                <button 
+                  className="load-more-btn"
+                  onClick={handleLoadMore}
+                >
+                  Load More ({totalItems - displayedFoods.length} more items)
+                </button>
+              </div>
+            )}
+            
+            {/* Pagination Info */}
+            {!hasMoreItems && totalItems > itemsPerPage && (
+              <div className="pagination-info-container">
+                <p>Showing all {totalItems} items</p>
+              </div>
+            )}
+          </>
         )}
       </div>
 

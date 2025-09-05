@@ -7,7 +7,8 @@ const addFood = async (req, res) => {
       sku, name, description, price, category,
       nameVI, nameEN, nameSK,
       isPromotion, promotionPrice,
-      soldCount, quantity, slug, options
+      soldCount, quantity, slug, options,
+      unit, unitValue
       // slug có thể để trống để model tự tạo
     } = req.body;
 
@@ -39,6 +40,8 @@ const addFood = async (req, res) => {
       category: category.trim(),
       image: image_url,
       quantity: Number(quantity),
+      unit: unit?.trim() || "cái",
+      unitValue: Number(unitValue) || 1,
       isPromotion: isPromotionBool,
       // originalPrice removed - using regular price as base
       promotionPrice: isPromotionBool ? Number(promotionPrice) : undefined,

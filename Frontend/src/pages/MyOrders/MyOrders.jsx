@@ -283,7 +283,7 @@ const MyOrders = () => {
                                 <p className="order-items">
                                     {order.items.map((item, idx) => (
                                         <span key={idx}>
-                                            {item.name} x {item.quantity}
+                                            {item.sku} - {item.name} x {item.quantity}
                                             {idx < order.items.length - 1 ? ', ' : ''}
                                         </span>
                                     ))}

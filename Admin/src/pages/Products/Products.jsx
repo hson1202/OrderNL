@@ -18,6 +18,11 @@ const Products = ({ url }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [filterCategory, setFilterCategory] = useState('all')
   const [statusFilter, setStatusFilter] = useState('all') // 'all', 'active', 'inactive'
+  
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage] = useState(10)
+  
   const [showAddForm, setShowAddForm] = useState(false)
   const [editingProduct, setEditingProduct] = useState(null)
   const INITIAL_EDIT_FORM = {
@@ -762,6 +767,23 @@ formData.set('isPromotion', String(!!editForm.isPromotion));    // boolean -> "t
     if (qb <= 5 && qa > 5) return 1;
     return (a.name || '').localeCompare(b.name || '');
   }), [foodList, searchTerm, filterCategory, statusFilter]);
+
+  // Pagination logic
+  const totalItems = filteredProducts.length
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
+  const displayedProducts = filteredProducts.slice(0, currentPage * itemsPerPage)
+  const hasMoreItems = currentPage < totalPages
+
+  // Reset pagination when filters change
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchTerm, filterCategory, statusFilter])
+
+  const handleLoadMore = () => {
+    if (hasMoreItems) {
+      setCurrentPage(prev => prev + 1)
+    }
+  }
 
   const getStatusBadge = (status) => {
     if (!status) {
@@ -1621,7 +1643,7 @@ formData.set('isPromotion', String(!!editForm.isPromotion));    // boolean -> "t
           <div className="loading">Loading products...</div>
         ) : (
           <div className="products-grid">
-            {filteredProducts.map((product) => {
+            {displayedProducts.map((product) => {
               // Debug log for test product
               if (product.name === 'test') {
                 console.log(`DEBUG - Rendering test product: ${product.name}, status: "${product.status}", filter: ${statusFilter}`)
@@ -1740,6 +1762,32 @@ formData.set('isPromotion', String(!!editForm.isPromotion));    // boolean -> "t
               </div>
             )
           })}
+          </div>
+        )}
+        
+        {/* Load More Button */}
+        {!isLoading && hasMoreItems && (
+          <div className="load-more-container">
+            <button 
+              className="load-more-btn"
+              onClick={handleLoadMore}
+            >
+              Load More ({totalItems - displayedProducts.length} more products)
+            </button>
+          </div>
+        )}
+        
+        {/* Pagination Info */}
+        {!isLoading && !hasMoreItems && totalItems > itemsPerPage && (
+          <div className="pagination-info-container">
+            <p>Showing all {totalItems} products</p>
+          </div>
+        )}
+        
+        {/* Pagination Stats */}
+        {!isLoading && (
+          <div className="pagination-stats">
+            <p>Showing {displayedProducts.length} of {totalItems} products</p>
           </div>
         )}
       </div>

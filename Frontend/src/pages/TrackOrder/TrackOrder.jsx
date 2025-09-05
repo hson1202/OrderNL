@@ -194,7 +194,7 @@ const TrackOrder = () => {
                 {order.items.map((item, index) => (
                   <div key={index} className="item-card">
                     <div className="item-info">
-                      <h4>{item.name}</h4>
+                      <h4>{item.sku} - {item.name}</h4>
                       <p className="item-price">€{item.price}</p>
                     </div>
                     <div className="item-quantity">

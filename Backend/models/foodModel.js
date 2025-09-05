@@ -12,6 +12,19 @@ const foodSchema = new mongoose.Schema({
   image: { type: String, default: "" },
   category: { type: String, required: true, trim: true },
   quantity: { type: Number, required: true, default: 0, min: 0 },
+  // Unit fields
+  unit: { 
+    type: String, 
+    required: true, 
+    default: "cái",
+    trim: true 
+  },
+  unitValue: { 
+    type: Number, 
+    required: true, 
+    default: 1,
+    min: 0.01 
+  },
   isPromotion: { type: Boolean, default: false },
       // originalPrice removed - using regular price as base
   promotionPrice: { type: Number },
